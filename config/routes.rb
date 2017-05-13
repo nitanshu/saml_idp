@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  get '/logout' => 'sessions#destroy'
+
+  get '/signup' => 'users#new'
+  post '/users' => 'users#create'
+
+  root 'users#new'
+  resources :users
+  resources :accounts
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   # get '/saml/auth' => 'saml_idp#new'
   # get '/saml/metadata' => 'saml_idp#show'

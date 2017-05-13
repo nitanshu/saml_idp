@@ -8,8 +8,4 @@ class SamlIdpController < SamlIdp::IdpController
     encode_SAMLResponse("you@example.com")
   end
 
-  def new_action
-    
-  end
-
 end
