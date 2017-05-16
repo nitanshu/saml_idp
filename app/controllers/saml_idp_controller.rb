@@ -8,12 +8,8 @@ class SamlIdpController < SamlIdp::IdpController
 
   def idp_make_saml_response(found_user) # not using params intentionally
     # NOTE encryption is optional
-    logger.info "----------- now i came here with found user=====#{found_user.inspect}========thidfasdfa=#{saml_request.inspect}---------------service provider =========-#{saml_request.service_provider.inspect}------------certificate#{saml_request.service_provider.cert.inspect}"
-    encode_response found_user, encryption: {
-                                  cert: saml_request.service_provider.cert,
-                                  block_encryption: 'aes256-cbc',
-                                  key_transport: 'rsa-oaep-mgf1p'
-                              }
+    # logger.info "----------- now i came here with found user=====#{found_user.inspect}========thidfasdfa=#{saml_request.inspect}---------------service provider =========-#{saml_request.service_provider.inspect}------------certificate#{saml_request.service_provider.cert.inspect}"
+    encode_response found_user
   end
   private :idp_make_saml_response
 

@@ -1,5 +1,5 @@
 SamlIdp.configure do |config|
-  base = "https://abdb1d1c.ngrok.io"
+  base = "https://b3a67f65.ngrok.io"
 
   config.x509_certificate = <<-CERT
 -----BEGIN CERTIFICATE-----
@@ -44,13 +44,13 @@ gAbBqA04wh64JhhfG69oTBwqwj3imlWF8+jDzV9RNNw=
 -----END RSA PRIVATE KEY-----
   CERT
   # config.password = "secret_key_password"
-  # config.algorithm = :sha256
+  config.algorithm = :sha256
   # config.organization_name = "Your Organization"
   # config.organization_url = "http://example.com"
-  # config.base_saml_location = "#{base}/saml"
+  config.base_saml_location = "#{base}/saml/metadata"
   # config.reference_id_generator                   # Default: -> { UUID.generate }
   # config.attribute_service_location = "#{base}/saml/attributes"
-  # config.single_service_post_location = "#{base}/saml/auth"
+  config.single_service_post_location = "#{base}/saml/auth"
 
   # Principal (e.g. User) is passed in when you `encode_response`
   #
@@ -122,9 +122,9 @@ gAbBqA04wh64JhhfG69oTBwqwj3imlWF8+jDzV9RNNw=
   # config.technical_contact.email_address = "example@example.com"
 
   service_providers = {
-      "https://abdb1d1c.ngrok.io/" => {
+      "https://b3a67f65.ngrok.io" => {
           fingerprint: "9E:65:2E:03:06:8D:80:F2:86:C7:6C:77:A1:D9:14:97:0A:4D:F4:4D",
-          metadata_url: "https://abdb1d1c.ngrok.io/saml/metadata"
+          metadata_url: "https://b3a67f65.ngrok.io/saml/metadata/"
       },
   }
 
