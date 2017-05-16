@@ -1,14 +1,14 @@
-class SamlIdpController < ApplicationController
-  include SamlIdp::IdpController
+class SamlIdpController < SamlIdp::IdpController
 
   def idp_authenticate(email, password) # not using params intentionally
-    user = User.by_email(email).first
-    user && user.valid_password?(password) ? user : nil
+    user = User.find_by_email(email)
+    user
   end
   private :idp_authenticate
 
   def idp_make_saml_response(found_user) # not using params intentionally
     # NOTE encryption is optional
+    logger.info "----------- now i came here with found user=====#{found_user.inspect}========thidfasdfa=#{saml_request.inspect}---------------service provider =========-#{saml_request.service_provider.inspect}------------certificate#{saml_request.service_provider.cert.inspect}"
     encode_response found_user, encryption: {
                                   cert: saml_request.service_provider.cert,
                                   block_encryption: 'aes256-cbc',
@@ -22,5 +22,4 @@ class SamlIdpController < ApplicationController
     user.logout
   end
   private :idp_logout
-
 end
