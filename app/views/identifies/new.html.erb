@@ -1,0 +1,27 @@
+<h1>Identity Provider</h1>
+<p>A request has been received from a Service Provider</p>
+
+<h2>Please identify yourself</h2>
+
+<%= form_tag(identifies_path) do %>
+
+<dl>
+  <dt><%= label_tag :email %></dt>
+    <dd><%= text_field_tag :email %></dd>
+  <dt><%= label_tag :password %></dt>
+    <dd><%= password_field_tag :password %></dd>
+</dl>
+
+  <%= submit_tag 'Log in' %>
+<% end %>
+
+<h2>Received request</h2>
+<%= content_tag('pre', prettify(@saml)) %>
+
+<h2>Data</h2>
+<dl>
+<% @data.to_hash.each do |key, value|  %>
+  <dt><%= key %></dt>
+  <dd><%= value %></dd>
+<% end %>
+</dl>
