@@ -1,5 +1,5 @@
 SamlIdp.configure do |config|
-  base = "https://4ebcb964.ngrok.io"
+  base = "https://7f137080.ngrok.io"
 
   config.x509_certificate = <<-CERT
 -----BEGIN CERTIFICATE-----
