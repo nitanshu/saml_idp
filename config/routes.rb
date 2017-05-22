@@ -21,5 +21,6 @@ Rails.application.routes.draw do
   get '/saml/metadata' => 'saml_idp#show'
   post '/saml/auth' => 'saml_idp#create'
   match '/saml/logout' => 'saml_idp#logout', via: [:get, :post, :delete]
+  post '/saml/call_sp' => 'saml_idp#call_sp'
 end
 
